@@ -1,22 +1,15 @@
 package web.dao;
 
+import org.springframework.stereotype.Repository;
 import web.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
-@Component
+@Repository
 public class UserDaoImpl implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
-
-    @Autowired
-    public UserDaoImpl(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
 
     public void addUser(User user) {
         entityManager.persist(user);
@@ -34,7 +27,7 @@ public class UserDaoImpl implements UserDao {
 
 
     public List<User> getAllUsers() {
-        return  entityManager.createNativeQuery("from user",User.class).getResultList();
+        return  entityManager.createQuery("from User",User.class).getResultList();
     }
 
 }

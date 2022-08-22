@@ -4,15 +4,15 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
-@Component
+
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "userbd")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String surname;
     private String lastname;
     private String city;
 
@@ -37,13 +37,9 @@ public class User {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+
+
 
     public String getLastname() {
         return lastname;
@@ -67,5 +63,15 @@ public class User {
 
     public void setAge(int age) {
         this.age = age;
+    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", city='" + city + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
