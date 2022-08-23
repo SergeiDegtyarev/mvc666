@@ -1,7 +1,6 @@
 package web.service;
 
 import web.dao.UserDao;
-import web.dao.UserDaoImpl;
 import web.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ public class ServiceImpl implements ServiceDao {
 
     private  UserDao userDao;
 
-    @Autowired
+
     public ServiceImpl(UserDao userDao) {
         this.userDao = userDao;
     }
@@ -25,17 +24,19 @@ public class ServiceImpl implements ServiceDao {
     public void addUser(User user) {
         userDao.addUser(user);
     }
-
+    public User findById(int id) {
+        return userDao.findById(id);
+    }
     @Override
     @Transactional
-    public void updateStudent(User user) {
-        userDao.updateStudent(user);
+    public void updateUser(User user) {
+        userDao.updateUser(user);
     }
 
     @Override
     @Transactional
-    public void deleteStudent(User user) {
-        userDao.deleteStudent(user);
+    public void deleteUser(int id) {
+        userDao.deleteUser(id);
     }
 
     @Override

@@ -1,16 +1,15 @@
 package web.service;
 
-import org.springframework.stereotype.Component;
 import web.model.User;
 
 import java.util.List;
 
 public interface ServiceDao {
     void addUser(User user);
+    User findById(int id);
+    void updateUser(User user);
 
-    void updateStudent(User user);
-
-    void deleteStudent(User user);
+    void deleteUser(int id);
 
     List<User> getAllUsers();
 }
